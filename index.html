@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style_index.css">
+    <title>Home</title>
+</head>
+<body>
+    <!-- ここからメイン -->
+    <!-- 検索ボックス -->
+    <form action="search.html" method="get">
+        <input type="search" name="search" placeholder="検索">
+        <input type="submit" name="submit" value="🔍">
+    </form>
+    <!-- ここまで検索 -->
+    <!--<a href="mypage.html" class="profile-link"><img src="image/profile.jpg" alt="プロフィール写真" width=50 class="profile-photo"></a>-->
+    <header>
+        <div class="hamburger-menu">
+            <input type="checkbox" id="menu-btn-check">
+            <label for="menu-btn-check" class="menu-btn"><span></span></label>
+            <div class="menu-content">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mypage.html">My Page</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="eventlist.html">Event List</a></li>
+                    <li><a href="recommend.html">Recommend</a></li>
+                    <li><a href="notification.html">Notification</a></li>
+                    <li><a href="challenge.html">Challenge</a></li>
+                    <li><a href="review.html">Review</a></li>
+                    <li><a href="area.html">Area List</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- オーバーレイ -->
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <!-- 地図表示 -->
+    <div id="map-container">
+        <!-- トグルボタン -->
+        <div class="toggle-container">
+            <span class="toggle-text">地図の切り替え</span>
+            <input type="checkbox" id="toggle-btn" class="toggle_input">
+            <label for="toggle-btn" class="toggle_label"></label>
+        </div>
+        <iframe id="original-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26344.077218450395!2d132.4067937066829!3d34.375674761287335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355aa31d3239ab45%3A0x754fe016d4421d57!2zQmFsY29tIEJNVyDluoPls7bnt4_lkIjjgrDjg6njgqbjg7Pjg4k!5e0!3m2!1sja!2sjp!4v1718791549210!5m2!1sja!2sjp" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="toggle-map" src="https://plateauview.mlit.go.jp/?share=01j0rdcmcffpfznq751k61yr2k" width="100%" height="600" style="border:0; display: none;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <!-- ここまで地図表示 -->
+
+    <!-- 日付の表示 -->
+    <div class="event-dates">
+        <div class="event-card">
+            <p>今日のイベント<br><span id="today" class="date"></span></p>
+        </div>
+        <div class="event-card">
+            <p>明日のイベント<br><span id="tomorrow" class="date"></span></p>
+        </div>
+        <div class="event-card">
+            <p>週末のイベント<br><span id="weekend" class="date"></span></p>
+        </div>
+    </div>
+
+    <h3><a href="eventlist.html">人気のイベント</a></h3>
+    <!-- イベント画像の一覧 -->
+    <div class="event-gallery">
+        <div class="event-item"><a href="eventlist/event1.html"><img src="image/event1.jpg" alt="1" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event2.html"><img src="image/event2.jpg" alt="2" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event3.html"><img src="image/event3.jpg" alt="3" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event4.html"><img src="image/event4.jpg" alt="4" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event5.html"><img src="image/event5.jpg" alt="5" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event6.html"><img src="image/event6.jpg" alt="6" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event7.html"><img src="image/event7.jpg" alt="7" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event8.html"><img src="image/event8.jpg" alt="8" width="300"></a></div>
+    </div>
+    <br>
+    <h3><a href="recommend.html">おすすめのイベント</a></h3>
+    <!-- イベント画像の一覧 -->
+    <div class="event-gallery">
+        <div class="event-item"><a href="eventlist/event8.html"><img src="image/event8.jpg" alt="8" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event7.html"><img src="image/event7.jpg" alt="7" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event6.html"><img src="image/event6.jpg" alt="6" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event5.html"><img src="image/event5.jpg" alt="5" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event4.html"><img src="image/event4.jpg" alt="4" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event3.html"><img src="image/event3.jpg" alt="3" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event2.html"><img src="image/event2.jpg" alt="2" width="300"></a></div>
+        <div class="event-item"><a href="eventlist/event1.html"><img src="image/event1.jpg" alt="1" width="300"></a></div>
+    </div>
+    <br>
+    <style>
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        </style>
+    <h3><a href="notification.html">通知</a></h3>
+<div class="event-dates2">
+    <div class="event-card2"><a href="notification.html">
+        <p>通知<br><span class="date">マイページから写真の投稿ができます!</p></a>
+    </div>
+    <div class="event-card2"><a href="notification.html">
+        <p>通知<br><span class="date">レビュー投稿をお願いします!</p></a>
+    </div>
+    <div class="event-card2"><a href="notification.html">
+        <p>通知<br><span class="date">イベントが開催されます!  参加しませんか?</p></a>
+    </div>
+</div>
+<br>
+<h3><a href="challenge.html">チャレンジ</a></h3>
+<div class="event-dates2">
+    <div class="event-card2"><a href="challenge.html">
+        <p>チャレンジ1</p><p>○○を訪れよう!</p></a>
+    </div>
+    <div class="event-card2"><a href="challenge.html">
+        <p>チャレンジ2</p><p>○○のお店に行こう!</p></a>
+    </div>
+    <div class="event-card2"><a href="challenge.html">
+        <p>チャレンジ3</p><p>○○に参加しよう!</p></a>
+    </div>
+</div>
+<br>
+    <!-- レビュー -->
+    <h3><a href="review.html">レビュー</a></h3>
+    <section class="review-gallery">
+        <div class="review-item"><a href="review.html">
+            <img src="image/review1.jpg" alt="レビュー1">
+            <p>○○に参加しました。家族全員で楽しめました!</p></a>
+        </div>
+        <div class="review-item"><a href="review.html">
+            <img src="image/review2.jpg" alt="レビュー2">
+            <p>○○に行ってきました!○○がとても良かったです!</p></a>
+        </div>
+        <div class="review-item"><a href="review.html">
+            <img src="image/review3.jpg" alt="レビュー3">
+            <p>○○イベントに3年ぶりに参加しました!</p></a>
+        </div>
+    </section>
+<br>
+<!-- 人気のイベントセクションの下に追加 -->
+<section class="region-list">
+    <style>
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        </style>
+    <h3><a href="area.html">地域一覧</a></h3>
+    <div class="region-gallery">
+        <div class="region-item"><a href="city/hiroshima.html">広島市</a></div>
+        <div class="region-item"><a href="city/hukuyama.html">福山市</a></div>
+        <div class="region-item">呉市</div>
+        <div class="region-item">尾道市</div>
+        <div class="region-item">三原市</div>
+        <div class="region-item">東広島市</div>
+        <div class="region-item">廿日市市</div>
+        <div class="region-item">大竹市</div>
+        <div class="region-item">安芸高田市</div>
+        <div class="region-item">庄原市</div>
+        <div class="region-item">竹原市</div>
+        <div class="region-item">府中市</div>
+        <div class="region-item">三次市</div>
+        <div class="region-item">江田島市</div>
+        <div class="region-item">府中町</div>
+        <div class="region-item">海田町</div>
+        <div class="region-item">熊野町</div>
+        <div class="region-item">坂町</div>
+        <div class="region-item">安芸太田町</div>
+        <div class="region-item">北広島町</div>
+        <div class="region-item">大崎上島町</div>
+        <div class="region-item">世羅町</div>
+        <div class="region-item">神石高原町</div>
+        <!-- 必要に応じて他の市町村も追加 -->
+    </div>
+</section><br>
+    <!-- ここまでメイン -->
+
+    <footer>
+        <!-- ここからフッター -->
+        <a href="index.html"><img src="image/home.png" alt="Home"></a>
+        <!-- ここまでフッター -->
+    </footer>
+
+    <script>
+        function displayDates() {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(today.getDate() + 1);
+
+            const weekend = new Date(today);
+            const dayOfWeek = today.getDay();
+            const daysUntilWeekend = 6 - dayOfWeek; // 6 = Saturday
+            weekend.setDate(today.getDate() + daysUntilWeekend);
+
+            const formatDate = (date) => {
+                const month = date.getMonth() + 1; // 月は0-11なので+1する
+                const day = date.getDate();
+                const weekday = ['日', '月', '火', '水', '木', '金', '土'][date.getDay()];
+                return `${month}/${day}(${weekday})`;
+            };
+
+            document.getElementById('today').innerText = formatDate(today);
+            document.getElementById('today').setAttribute('data-date', formatDate(today));
+            document.getElementById('tomorrow').innerText = formatDate(tomorrow);
+            document.getElementById('tomorrow').setAttribute('data-date', formatDate(tomorrow));
+            document.getElementById('weekend').innerText = formatDate(weekend);
+            document.getElementById('weekend').setAttribute('data-date', formatDate(weekend));
+        }
+
+        function navigateToDay(date) {
+            const dayUrl = `day.html?date=${encodeURIComponent(date)}`;
+            window.location.href = dayUrl;
+        }
+
+        function navigateToEvent(eventNumber) {
+            const eventUrl = `event${eventNumber}.html`;
+            window.location.href = eventUrl;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayDates();
+
+            // 日付表示エリアにクリックイベントを追加
+            document.querySelectorAll('.event-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const dateSpan = card.querySelector('.date');
+                    if (dateSpan) {
+                        navigateToDay(dateSpan.innerText);
+                    }
+                });
+            });
+
+            // トグルボタンの動作
+            const toggleButton = document.getElementById('toggle-btn');
+            const originalMap = document.getElementById('original-map');
+            const toggleMap = document.getElementById('toggle-map');
+
+            toggleButton.addEventListener('change', () => {
+                if (toggleButton.checked) {
+                    originalMap.style.display = 'none';
+                    toggleMap.style.display = 'block';
+                } else {
+                    originalMap.style.display = 'block';
+                    toggleMap.style.display = 'none';
+                }
+            });
+        });
+        // メニューが開いたときにオーバーレイを表示する
+const menuCheckbox = document.getElementById('menu-btn-check');
+const overlay = document.getElementById('overlay');
+menuCheckbox.addEventListener('change', () => {
+    if (menuCheckbox.checked) {
+        overlay.classList.add('active');
+    } else {
+        overlay.classList.remove('active');
+    }
+});
+
+// オーバーレイをクリックしたときにメニューを閉じる
+overlay.addEventListener('click', () => {
+    menuCheckbox.checked = false;
+    overlay.classList.remove('active');
+});
+
+    </script>
+</body>
+</html>

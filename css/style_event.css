@@ -1,0 +1,239 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+/* ハンバーガーメニュー */
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* ハンバーガーメニューの z-index */
+    background-color: #3584bb;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+.menu-btn span:before {
+    transform: translateY(-8px);
+}
+.menu-btn span:after {
+    transform: translateY(8px);
+}
+#menu-btn-check {
+    display: none;
+}
+.menu-content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 90; /* ハンバーガーメニューの下に配置 */
+    overflow-y: auto;
+}
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+}
+.menu-content ul li {
+    padding: 20px;
+}
+.menu-content ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+.menu-content ul li a:hover {
+    color: #3584bb;
+}
+#menu-btn-check:checked ~ .menu-content {
+    transform: translateX(0);
+}
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: transparent;
+}
+#menu-btn-check:checked ~ .menu-btn span:before {
+    transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span:after {
+    transform: rotate(-45deg);
+}
+
+/* メインコンテンツのスタイル */
+.event-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.event-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.event-details {
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.event-details h3 {
+    margin-bottom: 20px;
+}
+
+.event-details h4 {
+    margin: 40px 0 20px;
+    font-size: 1.2em;
+}
+
+/* PCモードのスタイル */
+@media (min-width: 768px) {
+    .event-content {
+        flex-direction: row;
+    }
+
+    .event-image,
+    .event-details {
+        width: 50%;
+    }
+
+    .event-details {
+        padding-top: 0;
+        margin-top: 0;
+        padding-left: 20px;
+    }
+
+    .event-details h3 {
+        margin-top: 0;
+    }
+
+    .event-details h4 {
+        margin-top: 20px;
+    }
+}
+/* フッターのスタイル */
+footer {
+    text-align: center; /* フッター内のテキストを中央揃え */
+    padding: 10px 0; /* 上下の余白を追加 */
+    position: relative; /* 位置指定のための相対位置 */
+    background-color: #f8f9fa; /* 背景色を追加（必要に応じて変更） */
+}
+
+footer a {
+    display: inline-block; /* インラインブロックで中央揃えを可能にする */
+}
+
+footer img {
+    vertical-align: middle; /* 画像の垂直位置を調整 */
+    max-width: 100%; /* 画像が親要素を超えないようにする */
+    height: auto; /* 高さを自動調整 */
+}
+
+
+
+
+/*---------------------------------------------------*/
+/* ハンバーガーメニューと検索ボックスの位置調整   */
+/*---------------------------------------------------*/
+@media (max-width: 767px) {
+    .menu-btn {
+        top: 15px; /* ハンバーガーメニューの位置を下に調整 */
+    }
+
+    form {
+        margin-top: 80px; /* 検索ボックスの位置を調整 */
+    }
+}
+
+/*---------------------------------------------------*/
+/* 検索ボックスのスタイル                           */
+/*---------------------------------------------------*/
+form {
+    display: flex;
+    flex-direction: row; /* 横に並べる */
+    align-items: center;
+    margin: 20px 0;
+}
+form input[type="search"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    max-width: 100%;
+}
+form input[type="submit"] {
+    padding: 10px 15px;
+    background-color: #3584bb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px; /* 検索ボックスとボタンの間隔 */
+}
+form input[type="submit"]:hover {
+    background-color: #2b6cb0;
+}
+
+
+
+/*---------------------------------------------------*/
+/* イベント一覧                                     */
+/*---------------------------------------------------*/
+.event-gallery {
+    display: flex;
+    flex-wrap: wrap; /* 横並びのラップを許可 */
+    gap: 20px;
+    padding: 10px;
+    justify-content: center; /* 中央揃え */
+}
+.event-item {
+    width: calc(50% - 20px); /* PCモードの2列に合わせる */
+    box-sizing: border-box;
+}
+.event-item h4 {
+    text-align: left; /* 文字を左揃え */
+    margin: 0;
+    padding: 10px 0;
+}
+.event-item img {
+    width: 100%;
+    height: auto; /* 高さ自動調整 */
+    object-fit: cover; /* 画像をトリミングして親要素に合わせる */
+    display: block;
+}
+
+/*---------------------------------------------------*/
+/* レスポンシブデザイン                               */
+/*---------------------------------------------------*/
+@media (max-width: 767px) {
+    .event-gallery {
+        flex-direction: column; /* 縦並びにする */
+        align-items: center; /* 中央揃え */
+    }
+    .event-item {
+        width: 90%; /* スマホモードの幅 */
+        margin-bottom: 20px; /* アイテム間の間隔 */
+    }
+    .event-item h4 {
+        text-align: left; /* 文字を左揃え */
+    }
+}

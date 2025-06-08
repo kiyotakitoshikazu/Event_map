@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Header -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style_search.css">
+    <title>Search Results</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <input type="checkbox" id="menu-btn-check">
+        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+        <div class="menu-content">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mypage.html">My Page</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="eventlist.html">Event List</a></li>
+                <li><a href="recommend.html">Recommend</a></li>
+                <li><a href="notification.html">Notification</a></li>
+                <li><a href="challenge.html">Challenge</a></li>
+                <li><a href="review.html">Review</a></li>
+                <li><a href="area.html">Area List</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Main -->
+    <main>
+        <div id="search-results-display">
+            <form>
+                <input type="search" id="search-box" name="query" placeholder="Search">
+                <input type="submit" name="submit" value="🔍">
+            </form>
+            <h3 id="search-results-title">検索結果</h3>
+            <div class="search-results-gallery">
+                <div class="search-result-item">
+                    <a href="eventlist/event1.html"><img src="image/event1.jpg" alt="Event 1" class="search-result-image"></a>
+                </div>
+                <div class="search-result-item">
+                    <a href="eventlist/event2.html"><img src="image/event2.jpg" alt="Event 2" class="search-result-image"></a>
+                </div>
+                <div class="search-result-item">
+                    <a href="eventlist/event3.html"><img src="image/event3.jpg" alt="Event 3" class="search-result-image"></a>
+                </div>
+                <div class="search-result-item">
+                    <a href="eventlist/event4.html"><img src="image/event4.jpg" alt="Event 4" class="search-result-image"></a>
+                </div>
+                <div class="search-result-item">
+                    <a href="eventlist/event5.html"><img src="image/event5.jpg" alt="Event 5" class="search-result-image"></a>
+                </div>
+                <div class="search-result-item">
+                    <a href="eventlist/event6.html"><img src="image/event6.jpg" alt="Event 6" class="search-result-image"></a>
+                </div>
+                <div class="search-result-item">
+                    <a href="eventlist/event7.html"><img src="image/event7.jpg" alt="Event 7" class="search-result-image"></a>
+                </div>
+                <div class="search-result-item">
+                    <a href="eventlist/event8.html"><img src="image/event8.jpg" alt="Event 8" class="search-result-image"></a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- End Main -->
+
+    <script>
+        function getParameterByName(name) {
+            const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const query = getParameterByName('query');
+            const searchBox = document.getElementById('search-box');
+            if (query) {
+                searchBox.value = query;
+            }
+        });
+    </script>
+</body>
+<footer>
+    <a href="index.html"><img src="image/home.png" alt="Home"></a>
+</footer>
+</html>

@@ -1,0 +1,277 @@
+@charset "UTF-8";
+
+/*---------------------------------------------------*/
+/* 全体レイアウト                                      */
+/*---------------------------------------------------*/
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*---------------------------------------------------*/
+/* 日付セクション                                     */
+/*---------------------------------------------------*/
+.date {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+/*---------------------------------------------------*/
+/* イベント一覧                                     */
+/*---------------------------------------------------*/
+.event-gallery {
+    display: flex;
+    flex-wrap: wrap; /* 横並びのラップを許可 */
+    gap: 20px;
+    padding: 10px;
+    justify-content: center; /* 中央揃え */
+}
+.event-item {
+    width: calc(50% - 20px); /* PCモードの2列に合わせる */
+    box-sizing: border-box;
+}
+.event-item h4 {
+    text-align: left; /* 文字を左揃え */
+    margin: 0;
+    padding: 10px 0;
+}
+.event-item img {
+    width: 100%;
+    height: auto; /* 高さ自動調整 */
+    object-fit: cover; /* 画像をトリミングして親要素に合わせる */
+    display: block;
+}
+
+/*---------------------------------------------------*/
+/* レスポンシブデザイン                               */
+/*---------------------------------------------------*/
+@media (max-width: 767px) {
+    .event-gallery {
+        flex-direction: column; /* 縦並びにする */
+        align-items: center; /* 中央揃え */
+    }
+    .event-item {
+        width: 90%; /* スマホモードの幅 */
+        margin-bottom: 20px; /* アイテム間の間隔 */
+    }
+    .event-item h4 {
+        text-align: left; /* 文字を左揃え */
+    }
+}
+
+
+
+
+
+/*---------------------------------------------------*/
+/* ハンバーガーメニュー                               */
+/*---------------------------------------------------*/
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* ハンバーガーメニューの z-index */
+    background-color: #3584bb;
+}
+
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.menu-btn span:before {
+    transform: translateY(-8px);
+}
+
+.menu-btn span:after {
+    transform: translateY(8px);
+}
+
+#menu-btn-check {
+    display: none;
+}
+
+.menu-content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 90; /* ハンバーガーメニューの下に配置 */
+    overflow-y: auto;
+}
+
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-content ul li {
+    padding: 20px;
+}
+
+.menu-content ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.menu-content ul li a:hover {
+    color: #3584bb;
+}
+
+#menu-btn-check:checked ~ .menu-content {
+    transform: translateX(0);
+}
+
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: transparent;
+}
+
+#menu-btn-check:checked ~ .menu-btn span:before {
+    transform: rotate(45deg);
+}
+
+#menu-btn-check:checked ~ .menu-btn span:after {
+    transform: rotate(-45deg);
+}
+
+/*---------------------------------------------------*/
+/* 検索ボックスのスタイル                           */
+/*---------------------------------------------------*/
+form {
+    display: flex;
+    flex-direction: row; /* 横に並べる */
+    align-items: center;
+    margin: 20px 0;
+}
+
+form input[type="search"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    max-width: 100%;
+}
+
+form input[type="submit"] {
+    padding: 10px 15px;
+    background-color: #3584bb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px; /* 検索ボックスとボタンの間隔 */
+}
+
+form input[type="submit"]:hover {
+    background-color: #2b6cb0;
+}
+
+/*---------------------------------------------------*/
+/* レスポンシブデザイン                               */
+/*---------------------------------------------------*/
+@media (max-width: 767px) {
+    .menu-btn {
+        top: 15px;
+        right: 15px;
+    }
+
+    form {
+        flex-direction: row; /* 横に並べる */
+        align-items: center;
+        justify-content: center; /* 横並びにして中央揃えにする */
+        margin-top: 60px; /* スマホ時の検索ボックスの位置を調整 */
+    }
+
+    form input[type="search"] {
+        width: 80%; /* 検索ボックスの幅を80%にする */
+        margin-bottom: 0; /* ボタンとの間隔を削除 */
+    }
+
+    form input[type="submit"] {
+        width: auto; /* ボタンの幅を自動調整 */
+        margin-left: 10px; /* 横の間隔を維持 */
+        margin-top: 0; /* ボタンと検索ボックスの間隔を削除 */
+    }
+
+    .event-gallery {
+        display: block; /* 縦一列に表示 */
+    }
+
+    .event-item {
+        width: 100%; /* 幅を100%に */
+        margin-bottom: 10px;
+        position: relative; /* 画像を縦横比に合わせて調整するための位置指定 */
+        padding-top: 50%; /* 縦1:横2の比率を維持 */
+        overflow: hidden; /* 画像が親要素からはみ出さないようにする */
+        text-align: center; /* 中央揃えのためのテキストアラインメント */
+    }
+
+    .event-item img {
+        position: absolute; /* 絶対位置 */
+        top: 50%; /* 中央に配置 */
+        left: 50%; /* 中央に配置 */
+        transform: translate(-50%, -50%); /* 画像の中心を中央に配置 */
+        width: 100%; /* 幅を100%に */
+        height: auto; /* 高さは自動調整 */
+        max-height: 100%; /* 高さが親要素を超えないようにする */
+        object-fit: cover; /* 画像の比率を保ちながらカバー */
+    }
+
+    .date {
+        font-size: 18px;
+    }
+}
+
+/* フッターのスタイル */
+footer {
+    text-align: center; /* フッター内のテキストを中央揃え */
+    padding: 10px 0; /* 上下の余白を追加 */
+    position: relative; /* 位置指定のための相対位置 */
+    background-color: #f8f9fa; /* 背景色を追加（必要に応じて変更） */
+}
+
+footer a {
+    display: inline-block; /* インラインブロックで中央揃えを可能にする */
+}
+
+footer img {
+    vertical-align: middle; /* 画像の垂直位置を調整 */
+    max-width: 100%; /* 画像が親要素を超えないようにする */
+    height: auto; /* 高さを自動調整 */
+}
+
+/*---------------------------------------------------*/
+/* ハンバーガーメニューと検索ボックスの位置調整   */
+/*---------------------------------------------------*/
+@media (max-width: 767px) {
+    .menu-btn {
+        top: 15px; /* ハンバーガーメニューの位置を下に調整 */
+    }
+
+    form {
+        margin-top: 80px; /* 検索ボックスの位置を調整 */
+    }
+}

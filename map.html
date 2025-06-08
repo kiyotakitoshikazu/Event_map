@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style_map.css">
+    <title>Map</title>
+</head>
+<body>
+    <!-- ハンバーガーメニュー -->
+    <header>
+        <div class="hamburger-menu">
+            <input type="checkbox" id="menu-btn-check">
+            <label for="menu-btn-check" class="menu-btn"><span></span></label>
+            <div class="menu-content">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mypage.html">My Page</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="eventlist.html">Event List</a></li>
+                    <li><a href="recommend.html">Recommend</a></li>
+                    <li><a href="notification.html">Notification</a></li>
+                    <li><a href="challenge.html">Challenge</a></li>
+                    <li><a href="review.html">Review</a></li>
+                    <li><a href="area.html">Area List</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- オーバーレイ -->
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <!-- 地図表示 -->
+    <p>_____________________________________________________________________________________________________________________________</p>
+    <div id="map-container">
+        <!-- スマホモード用トグルボタン -->
+        <div class="toggle-container">
+            <span class="toggle-text">地図の切り替え</span>
+            <input type="checkbox" id="toggle-btn" class="toggle_input">
+            <label for="toggle-btn" class="toggle_label"></label>
+        </div>
+        <!-- グーグルマップ -->
+        <iframe id="original-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26344.077218450395!2d132.4067937066829!3d34.375674761287335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355aa31d3239ab45%3A0x754fe016d4421d57!2zQmFsY29tIEJNVyDluoPls7bnt4_lkIjjgrDjg6njgqbjg7Pjg4k!5e0!3m2!1sja!2sjp!4v1718791549210!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- 3Dマップ -->
+        <iframe id="toggle-map" src="https://plateauview.mlit.go.jp/?share=01j0rdcmcffpfznq751k61yr2k" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <footer>
+        <!-- フッター -->
+        <a href="index.html"><img src="image/home.png" alt="Home"></a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // トグルボタンの動作
+            const toggleButton = document.getElementById('toggle-btn');
+            const originalMap = document.getElementById('original-map');
+            const toggleMap = document.getElementById('toggle-map');
+
+            toggleButton.addEventListener('change', () => {
+                if (toggleButton.checked) {
+                    originalMap.style.display = 'none';
+                    toggleMap.style.display = 'block';
+                } else {
+                    originalMap.style.display = 'block';
+                    toggleMap.style.display = 'none';
+                }
+            });
+        });
+        // メニューが開いたときにオーバーレイを表示する
+const menuCheckbox = document.getElementById('menu-btn-check');
+const overlay = document.getElementById('overlay');
+menuCheckbox.addEventListener('change', () => {
+    if (menuCheckbox.checked) {
+        overlay.classList.add('active');
+    } else {
+        overlay.classList.remove('active');
+    }
+});
+
+// オーバーレイをクリックしたときにメニューを閉じる
+overlay.addEventListener('click', () => {
+    menuCheckbox.checked = false;
+    overlay.classList.remove('active');
+});
+    </script>
+</body>
+</html>

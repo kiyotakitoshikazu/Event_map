@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Header -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style_day.css">
+    <title>Day View</title>
+    <header>
+        <div class="hamburger-menu">
+            <input type="checkbox" id="menu-btn-check">
+            <label for="menu-btn-check" class="menu-btn"><span></span></label>
+            <!-- Menu -->
+            <div class="menu-content">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mypage.html">My Page</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="eventlist.html">Event List</a></li>
+                    <li><a href="recommend.html">Recommend</a></li>
+                    <li><a href="notification.html">Notification</a></li>
+                    <li><a href="challenge.html">Challenge</a></li>
+                    <li><a href="review.html">Review</a></li>
+                    <li><a href="area.html">Area List</a></li>
+                </ul>
+            </div>
+            <!-- End Menu -->
+        </div>
+    </header>
+    <!-- End Header -->
+</head>
+<body>
+    <!-- Main -->
+    <div id="date-display">
+        <form>
+            <input type="search" id="search-box" name="search" placeholder="Search">
+            <input type="submit" name="submit" value="🔍">
+        </form>
+        <h3 id="event-list-title">Event List</h3>
+        <div class="event-gallery">
+            <div class="event-item">
+                <h4>イベント1</h4>
+                <a href="eventlist/event1.html"><img src="image/event1.jpg" alt="Event 1" class="event-image"></a>
+            </div>
+            <div class="event-item">
+                <h4>イベント2</h4>
+                <a href="eventlist/event2.html"><img src="image/event2.jpg" alt="Event 2" class="event-image"></a>
+            </div>
+            <div class="event-item">
+                <h4>イベント3</h4>
+                <a href="eventlist/event3.html"><img src="image/event3.jpg" alt="Event 3" class="event-image"></a>
+            </div>
+            <div class="event-item">
+                <h4>イベント4</h4>
+                <a href="eventlist/event4.html"><img src="image/event4.jpg" alt="Event 4" class="event-image"></a>
+            </div>
+            <div class="event-item">
+                <h4>イベント5</h4>
+                <a href="eventlist/event5.html"><img src="image/event5.jpg" alt="Event 5" class="event-image"></a>
+            </div>
+            <div class="event-item">
+                <h4>イベント6</h4>
+                <a href="eventlist/event6.html"><img src="image/event6.jpg" alt="Event 6" class="event-image"></a>
+            </div>
+            <div class="event-item">
+                <h4>イベント7</h4>
+                <a href="eventlist/event7.html"><img src="image/event7.jpg" alt="Event 7" class="event-image"></a>
+            </div>
+            <div class="event-item">
+                <h4>イベント8</h4>
+                <a href="eventlist/event8.html"><img src="image/event8.jpg" alt="Event 8" class="event-image"></a>
+            </div>
+        </div>
+    </div>
+    <!-- End Main -->
+
+    <script>
+        function getParameterByName(name) {
+            const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const date = getParameterByName('date');
+            const title = document.getElementById('event-list-title');
+            if (date) {
+                title.innerText = `${date} Event List`;
+                document.getElementById('search-box').value = date;
+            } else {
+                title.innerText = 'Date not specified';
+            }
+        });
+    </script>
+</body>
+<footer>
+    <!-- Footer -->
+    <a href="index.html"><img src="image/home.png" alt="Home"></a>
+    <!-- End Footer -->
+</footer>
+</html>

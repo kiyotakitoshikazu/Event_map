@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #3584bb;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+main {
+    padding: 20px;
+}
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.photo-item {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: calc(33.333% - 20px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.photo-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.delete-btn {
+    background: #ff6b6b;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.delete-btn:hover {
+    background: #ff4c4c;
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #f8f9fa;
+}
+/*---------------------------------------------------*/
+/* ハンバーガーメニュー                               */
+/*---------------------------------------------------*/
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* ハンバーガーメニューの z-index */
+    background-color: #3584bb;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+.menu-btn span:before {
+    transform: translateY(-8px);
+}
+.menu-btn span:after {
+    transform: translateY(8px);
+}
+#menu-btn-check {
+    display: none;
+}
+.menu-content {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 90; /* ハンバーガーメニューの下に配置 */
+    overflow-y: auto;
+}
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+}
+.menu-content ul li {
+    padding: 20px;
+}
+.menu-content ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+.menu-content ul li a:hover {
+    color: #3584bb;
+}
+#menu-btn-check:checked ~ .menu-content {
+    transform: translateX(0);
+}
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: transparent;
+}
+#menu-btn-check:checked ~ .menu-btn span:before {
+    transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span:after {
+    transform: rotate(-45deg);
+}
+/* フッターのスタイル */
+footer {
+    text-align: center; /* フッター内のテキストを中央揃え */
+    padding: 10px 0; /* 上下の余白を追加 */
+    position: relative; /* 位置指定のための相対位置 */
+    background-color: #f8f9fa; /* 背景色を追加（必要に応じて変更） */
+}
+
+footer a {
+    display: inline-block; /* インラインブロックで中央揃えを可能にする */
+}
+
+footer img {
+    vertical-align: middle; /* 画像の垂直位置を調整 */
+    max-width: 100%; /* 画像が親要素を超えないようにする */
+    height: auto; /* 高さを自動調整 */
+}

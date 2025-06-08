@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style_challenge.css">
+    <title>チャレンジ</title>
+    <style>
+        /* チェックボックスのスタイル */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* チェックボックスにラベルを表示するスタイル */
+        .event-card2 {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .event-card2 input[type="checkbox"] + label {
+            display: block;
+            cursor: pointer;
+        }
+
+        .event-card2 input[type="checkbox"]:checked + label {
+            color: green;
+            text-decoration: line-through;
+        }
+
+        .event-card2 input[type="checkbox"]:checked ~ .point {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- ここからメイン -->
+    <!-- 検索ボックス -->
+    <form action="search.html" method="get">
+        <input type="search" name="search" placeholder="検索">
+        <input type="submit" name="submit" value="🔍">
+    </form>
+    <!-- ここまで検索 -->
+    <header>
+        <div class="hamburger-menu">
+            <input type="checkbox" id="menu-btn-check">
+            <label for="menu-btn-check" class="menu-btn"><span></span></label>
+            <div class="menu-content">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mypage.html">My Page</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="eventlist.html">Event List</a></li>
+                    <li><a href="recommend.html">Recommend</a></li>
+                    <li><a href="notification.html">Notification</a></li>
+                    <li><a href="challenge.html">Challenge</a></li>
+                    <li><a href="review.html">Review</a></li>
+                    <li><a href="area.html">Area List</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <h3>チャレンジ</h3>
+    <div class="challenge-header">
+        <p id="date-heading">今日の日付のチャレンジ</p>
+        <p id="challenge-status"></p>
+    </div>
+    <div class="event-dates2">
+        <div class="event-card2">
+            <input type="checkbox" id="challenge1">
+            <label for="challenge1">□ チャレンジ1: ○○を訪れよう!</label>
+            <span class="point" id="point1"></span>
+        </div>
+        <div class="event-card2">
+            <input type="checkbox" id="challenge2">
+            <label for="challenge2">□ チャレンジ2: ○○のお店に行こう!</label>
+            <span class="point" id="point2"></span>
+        </div>
+        <div class="event-card2">
+            <input type="checkbox" id="challenge3">
+            <label for="challenge3">□ チャレンジ3: ○○に参加しよう!</label>
+            <span class="point" id="point3"></span>
+        </div>
+    </div>
+
+    <!-- ここまでメイン -->
+
+    <footer>
+        <!-- ここからフッター -->
+        <a href="index.html"><img src="image/home.png" alt="Home"></a>
+        <!-- ここまでフッター -->
+    </footer>
+    
+    <script>
+        // 今日の日付を表示する
+        function updateDate() {
+            const today = new Date();
+            const date = `${today.getMonth() + 1}/${today.getDate()} (${['日', '月', '火', '水', '木', '金', '土'][today.getDay()]})`;
+            document.getElementById('date-heading').textContent = `${date}のチャレンジ`;
+        }
+
+        // チェックボックスの状態に応じてポイントを更新する
+        function updatePoints() {
+            let totalPoints = 0;
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                const pointElement = document.getElementById(`point${checkbox.id.slice(-1)}`);
+                if (pointElement) {
+                    if (checkbox.checked) {
+                        pointElement.textContent = "1ポイント";
+                        pointElement.style.color = "green";
+                        totalPoints += 1; // ポイントをカウント
+                    } else {
+                        pointElement.textContent = ""; // 何も表示しない
+                        pointElement.style.color = "black";
+                    }
+                }
+            });
+
+            // すべてチェックされた場合の処理
+            if (totalPoints === checkboxes.length) {
+                document.getElementById('challenge-status').textContent = `${document.getElementById('date-heading').textContent}クリア！5ポイント獲得！`;
+            } else {
+                document.getElementById('challenge-status').textContent = '';
+            }
+        }
+
+        // 初期化処理
+        document.addEventListener('DOMContentLoaded', () => {
+            updateDate();
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updatePoints);
+            });
+        });
+    </script>
+</body>
+</html>
+
